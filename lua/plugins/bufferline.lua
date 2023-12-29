@@ -5,12 +5,10 @@ return {
     "akinsho/bufferline.nvim",
     dependencies = { "catppuccin/nvim" },
     config = function()
-      local highlights = require("catppuccin.groups.integrations.bufferline").get()
-
       require("bufferline").setup({
-        highlights = highlights,
+        -- highlights = highlights,
         options = {
-          indicator = { style = "underline" },
+          indicator = { style = "rounded" },
           diagnostics = "nvim_lsp",
           offsets = {
             {

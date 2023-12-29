@@ -1,3 +1,8 @@
+local function setIcon(name, padding)
+  local icons = require('config.icons.nerd_font')
+  return icons[name] .. string.rep(" ", padding or 0)
+end
+
 return function(_, opts)
   local wk = require('which-key')
 
@@ -17,6 +22,7 @@ return function(_, opts)
         nav = true,          -- misc bindings to work with windows
         z = true,            -- bindings for folds, spelling and others prefixed with z
         g = true,            -- bindings for prefixed with g
+        v = true,            -- bindings for prefixed with v
       },
     },
     key_labels = {
@@ -24,14 +30,14 @@ return function(_, opts)
     icons = {
       breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
       separator = "➜", -- symbol used between a key and it's label
-      group = "+", -- symbol prepended to a group
+      group = "", -- symbol prepended to a group
     },
     popup_mappings = {
       scroll_down = "<c-d>", -- binding to scroll down inside the popup
       scroll_up = "<c-u>",   -- binding to scroll up inside the popup
     },
     window = {
-      border = "none",       -- none, single, double, shadow
+      border = "none",          -- none, single, double, shadow
       position = "bottom",      -- bottom, top
       margin = { 1, 0, 1, 0 },  -- extra window margin [top, right, bottom, left]
       padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
@@ -41,7 +47,7 @@ return function(_, opts)
       height = { min = 4, max = 25 },                                             -- min and max height of the columns
       width = { min = 20, max = 50 },                                             -- min and max width of the columns
       spacing = 3,                                                                -- spacing between columns
-      align = "left",                                                           -- align columns left, center or right
+      align = "left",                                                             -- align columns left, center or right
     },
     ignore_missing = false,                                                       -- enable this to hide mappings for which you didn't specify a label
     hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
@@ -56,13 +62,16 @@ return function(_, opts)
 
   local groups = {
     ["f"] = {
-      name = "Find Group"
+      name = setIcon('Search', 1) .. "Find Group"
     },
     ["g"] = {
-      name = "Git Group"
+      name = setIcon('Git', 1) .. "Git Group"
     },
     ["l"] = {
-      name = "LSP Group"
+      name = setIcon('ActiveLSP', 1) .. "LSP Group"
+    },
+    ['p'] = {
+      name = setIcon('Package', 1) .. "Packer Group"
     },
   }
 

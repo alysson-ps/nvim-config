@@ -47,7 +47,6 @@ return {
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
-    event = "VeryLazy",
     opts = {
       icons = { group = vim.g.icons_enabled and "" or "+", separator = "" },
       disable = { filetypes = { "TelescopePrompt" } },
@@ -63,13 +62,13 @@ return {
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
+      -- signs = {
+      --   add = { text = '+' },
+      --   change = { text = '~' },
+      --   delete = { text = '_' },
+      --   topdelete = { text = '‾' },
+      --   changedelete = { text = '~' },
+      -- },
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
 
@@ -147,7 +146,7 @@ return {
     opts = {},
   },
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',               opts = {} },
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -184,59 +183,8 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
-    opts = {
-      auto_clean_after_session_restore = true,
-      close_if_last_window = true,
-      sources = {
-        "filesystem",
-        "buffers",
-        "git_status",
-      },
-      default_component_configs = {
-        indent = {
-          indent_size = 2,
-          padding = 1,
-          with_markers = true,
-          indent_marker = "│",
-          last_indent_marker = "└",
-          highlight = "NeoTreeIndentMarker",
-          with_expanders = nil,
-          expander_collapsed = "",
-          expander_expanded = "",
-          expander_highlight = "NeoTreeExpander",
-        },
-        git_status = {
-          symbols = {
-            -- Change type
-            added     = "✚",
-            deleted   = "✖",
-            modified  = "",
-            renamed   = "",
-            -- Status type
-            untracked = "",
-            ignored   = "",
-            unstaged  = "",
-            staged    = "",
-            conflict  = "",
-          }
-        },
-      },
-      window = {
-        mappings = {
-          ["<space>"] = false,
-        },
-        filesystem = {
-          filtered_items = {
-            visible = false,
-          },
-        },
-        hide_by_pattern = {
-          --"*.meta",
-          --"*/src/*/tsconfig.json",
-        },
-        hide_hidden = true,
-      }
-    },
-  }
-
+    config = require("plugins.configs.neo-tree")
+  },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  { 'windwp/nvim-autopairs',               opts = {} },
 }

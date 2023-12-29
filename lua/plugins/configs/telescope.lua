@@ -10,6 +10,18 @@ return function(_, _)
                 },
             },
         },
+        pickers = {
+          colorscheme = {
+            enable_preview = true,
+            on_cancel = function ()
+              print("Cancelou")
+            end,
+            on_change = function (selection)
+              -- vim.cmd('colorscheme ' .. selection)
+              print('colorscheme ' .. selection)
+            end
+          }
+        }
     }
 
     -- Enable telescope fzf native, if installed
