@@ -7,20 +7,21 @@ return function(_, _)
   lualine.setup({
     options = {
       icons_enabled = true,
-      component_separators = { left = "", right = "" },
-      section_separators = { left = "", right = "" },
+      globalstatus = true,
+      -- theme = 'sonokai',
+      -- component_separators = { left = "", right = "" },
+      -- section_separators = { left = "", right = "" },
       disabled_filetypes = {
-        statusline = { 'neo-tree' },
+        -- statusline = { 'neo-tree' },
         winbar = {},
       },
-      ignore_focus = {},
-      always_divide_middle = true,
-      globalstatus = false,
-      refresh = {
-        statusline = 1000,
-        tabline = 1000,
-        winbar = 1000,
-      },
+      -- ignore_focus = {},
+      -- always_divide_middle = true,
+      -- refresh = {
+      --   statusline = 1000,
+      --   tabline = 1000,
+      --   winbar = 1000,
+      -- },
     },
     sections = {
       lualine_a = { "mode" },
@@ -31,7 +32,7 @@ return function(_, _)
       lualine_z = { "location" },
     },
     inactive_sections = {
-      llualine_a = { "mode" },
+      lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
       lualine_c = {},
       lualine_x = { "encoding", "fileformat", "filetype" },
@@ -41,6 +42,6 @@ return function(_, _)
     tabline = {},
     winbar = {},
     inactive_winbar = {},
-    extensions = {},
+    extensions = { "neo-tree", "lazy" },
   })
 end

@@ -21,7 +21,7 @@ return function(_, _opts)
     nmap('<leader>lr', vim.lsp.buf.rename, 'Rename')
     nmap('<leader>la', vim.lsp.buf.code_action, 'Code Action')
     nmap('<leader>ld', require('telescope.builtin').lsp_type_definitions, 'Type Definition')
-    nmap('<leader>lf', require('telescope.builtin').lsp_type_definitions, 'Format current buffer')
+    nmap('<leader>lf', ':Format', 'Format current buffer')
 
 
     nmap('gd', require('telescope.builtin').lsp_definitions, 'Goto Definition')

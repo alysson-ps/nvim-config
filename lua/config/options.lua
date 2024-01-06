@@ -47,6 +47,7 @@ local options = {
       writebackup = false, -- disable making a backup before overwriting a file
     },
     g = {
+      noconfirm = false,
       mapleader = " ", -- set leader key
       maplocalleader = ",", -- set default local leader key
       -- AstroNvim specific global options

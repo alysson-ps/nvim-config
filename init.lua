@@ -7,6 +7,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+vim.cmd('set confirm')
+
 require("config.options")
 require("config.keymaps")
 require("config.lazy")
@@ -14,4 +16,4 @@ require("config.autocmds")
 
 require("config.color")
 
-vim.cmd([[colorscheme gruvbox-material]])
+-- vim.cmd([[colorscheme gruvbox-material]])

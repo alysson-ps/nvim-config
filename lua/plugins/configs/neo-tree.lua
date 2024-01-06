@@ -7,6 +7,11 @@ return function(_, opts)
     popup_border_style = "rounded",
     sort_case_insensitive = false,
 
+    source_selector = {
+      winbar = false,
+      statusline = false
+    },
+
     default_component_configs = {
       container = {
         enable_character_fade = true
@@ -48,8 +53,8 @@ return function(_, opts)
           -- Change type
           added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
           modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-          deleted   = "✖",-- this can only be used in the git_status source
-          renamed   = "󰁕",-- this can only be used in the git_status source
+          deleted   = "✖", -- this can only be used in the git_status source
+          renamed   = "󰁕", -- this can only be used in the git_status source
           -- Status type
           untracked = "",
           ignored   = "",
@@ -125,6 +130,19 @@ return function(_, opts)
           ["ot"] = { "order_by_type", nowait = false },
         }
       }
-    }
+    },
+    event_handlers = {
+
+          {
+            event = "file_opened",
+            handler = function(_)
+              -- auto close
+              -- vimc.cmd("Neotree close")
+              -- OR
+              require("neo-tree.command").execute({ action = "close" })
+            end
+          },
+
+        }
   }, opts)
 end

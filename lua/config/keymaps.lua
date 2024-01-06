@@ -15,42 +15,56 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- Basic keymaps
-vim.keymap.set('n', '<leader>q', ':confirm q<cr>', { desc = 'Quit' })
-vim.keymap.set('n', '<leader>Q', ':confirm qall<cr>', { desc = 'Quit all' })
-vim.keymap.set('n', '<leader>w', ':w<cr>', { desc = 'Save' })
-vim.keymap.set('n', '<leader>c', ':bd<cr>', { desc = 'Close buffer' })
-
+vim.keymap.set('n', '<leader>q', ':confirm q!<cr>', { desc = 'Quit', silent = true })
+vim.keymap.set('n', '<leader>Q', ':confirm qall<cr>', { desc = 'Quit all', silent = true })
+vim.keymap.set('n', '<leader>w', ':w<cr>', { desc = 'Save', silent = true })
+vim.keymap.set('n', '<leader>c', function()
+  local bd = require("mini.bufremove").delete
+  if vim.bo.modified then
+    local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+    if choice == 1 then -- Yes
+      vim.cmd.write()
+      bd(0)
+    elseif choice == 2 then -- No
+      bd(0, true)
+    end
+  else
+    bd(0)
+  end
+end, { desc = 'Close buffer', silent = true })
 
 -- Find keymaps
-vim.keymap.set('n', '<leader>ff', ':lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown{previewer = false})<cr>', { desc = 'Find files' })
-vim.keymap.set('n', '<leader>fw', ':Telescope live_grep<cr>', { desc = 'Find text' })
-vim.keymap.set('n', '<leader>fb', ':Telescope buffers<cr>', { desc = 'Find buffers' })
-vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<cr>', { desc = 'Find help' })
-vim.keymap.set('n', '<leader>fo', ':Telescope oldfiles<cr>', { desc = 'Find old files' })
-vim.keymap.set('n', '<leader>fd', ':Telescope diff_files<cr>', { desc = 'Find diff' })
-vim.keymap.set('n', '<leader>fc', ':Telescope commands<cr>', { desc = 'Find command' })
-vim.keymap.set('n', '<leader>ft', ':lua require("telescope.builtin").colorscheme() <cr>', { desc = 'Find colorscheme' })
-
+vim.keymap.set('n', '<leader>ff', ':Telescope find_files<cr>', { desc = 'Find files', silent = true })
+vim.keymap.set('n', '<leader>fw', ':Telescope live_grep<cr>', { desc = 'Find text', silent = true })
+vim.keymap.set('n', '<leader>fb', ':Telescope buffers<cr>', { desc = 'Find buffers', silent = true })
+vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<cr>', { desc = 'Find help', silent = true })
+vim.keymap.set('n', '<leader>fo', ':Telescope oldfiles<cr>', { desc = 'Find old files', silent = true })
+vim.keymap.set('n', '<leader>fd', ':Telescope diff_files<cr>', { desc = 'Find diff', silent = true })
+vim.keymap.set('n', '<leader>fc', ':Telescope commands<cr>', { desc = 'Find command', silent = true })
+vim.keymap.set('n', '<leader>ft', ':Telescope colorscheme<cr>', { desc = 'Find colorscheme', silent = true })
+vim.keymap.set('n', '<leader>f/', ':Telescope current_buffer_fuzzy_find<cr>', { desc = 'Find in file', silent = true })
 
 -- NeoTree keymaps
-vim.keymap.set('n', '<leader>e', ':Neotree toggle<cr>', { desc = 'Toggle explorer' })
+vim.keymap.set('n', '<leader>e', ':Neotree toggle<cr>', { desc = 'Toggle explorer', silent = true })
 vim.keymap.set('n', '<leader>o', function()
   if vim.bo.filetype == "neo-tree" then
     vim.cmd.wincmd "p"
   else
     vim.cmd.Neotree "focus"
   end
-end, { desc = 'Toggle explorer focus' })
+end, { desc = 'Toggle explorer focus', silent = true })
 
 -- Plugins
-vim.keymap.set('n', '<leader>pp', ':Lazy<cr>', { desc = 'Open Lazy' })
-vim.keymap.set('n', '<leader>pl', ':Lazy load all<cr>', { desc = 'Lazy load all' })
-vim.keymap.set('n', '<leader>pu', ':Lazy update<cr>', { desc = 'Lazy update' })
-vim.keymap.set('n', '<leader>pc', ':Lazy clean<cr>', { desc = 'Lazy clean' })
+vim.keymap.set('n', '<leader>pp', ':Lazy<cr>', { desc = 'Open Lazy', silent = true })
+vim.keymap.set('n', '<leader>pl', ':Lazy load all<cr>', { desc = 'Lazy load all', silent = true })
+vim.keymap.set('n', '<leader>pu', ':Lazy update<cr>', { desc = 'Lazy update', silent = true })
+vim.keymap.set('n', '<leader>pc', ':Lazy clean<cr>', { desc = 'Lazy clean', silent = true })
 
 -- Git keymaps
-vim.keymap.set('n', '<leader>gg', ':LazyGit<cr>', { desc = 'LazyGit' })
+vim.keymap.set('n', '<leader>gg', ':LazyGit<cr>', { desc = 'LazyGit', silent = true })
 vim.keymap.set('n', '<leader>gt', ':lua require("telescope.builtin").git_status { use_file_path = true }<cr>',
-  { desc = 'Git status' })
-vim.keymap.set('n', '<leader>gb', ':lua require("telescope.builtin").git_branches()<cr>', { desc = 'Git branches' })
-vim.keymap.set('n', '<leader>gc', ':lua require("telescope.builtin").git_commits()<cr>', { desc = 'Git commits' })
+  { desc = 'Git status', silent = true })
+vim.keymap.set('n', '<leader>gb', ':lua require("telescope.builtin").git_branches()<cr>',
+  { desc = 'Git branches', silent = true })
+vim.keymap.set('n', '<leader>gc', ':lua require("telescope.builtin").git_commits()<cr>',
+  { desc = 'Git commits', silent = true })
