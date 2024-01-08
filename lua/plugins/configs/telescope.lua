@@ -8,6 +8,14 @@ return function(_, _)
         i = {
           ['<C-u>'] = false,
           ['<C-d>'] = false,
+          ["<C-q>"] = function(prompt_bufnr)
+            local colorscheme_file = vim.fn.stdpath('config') .. '/.colorscheme'
+
+            local selection = require('telescope.actions.state').get_selected_entry()
+            vim.cmd('colorscheme ' .. selection.value)
+            vim.fn.writefile({ selection.value }, colorscheme_file)
+            require('telescope.actions').close(prompt_bufnr)
+          end,
         },
       },
     },
@@ -16,13 +24,10 @@ return function(_, _)
         theme = "dropdown"
       },
       colorscheme = {
+        theme = "dropdown",
         enable_preview = true,
-        on_cancel = function()
-          print("Cancelou")
-        end,
-        on_change = function(selection)
-          -- vim.cmd('colorscheme ' .. selection)
-          print('colorscheme ' .. selection)
+        on_complete = function(_)
+          print("aqui")
         end
       }
     }
@@ -31,6 +36,7 @@ return function(_, _)
   -- Enable telescope fzf native, if installed
   pcall(require('telescope').load_extension, 'fzf')
   pcall(require("telescope").load_extension, "ui-select")
+  pcall(require("telescope").load_extension, "project")
   -- Telescope live_grep in git root
   -- Function to find the git root directory based on the current buffer's path
 
