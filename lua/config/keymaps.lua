@@ -43,6 +43,7 @@ vim.keymap.set('n', '<leader>fd', ':Telescope diff_files<cr>', { desc = 'Find di
 vim.keymap.set('n', '<leader>fc', ':Telescope commands<cr>', { desc = 'Find command', silent = true })
 vim.keymap.set('n', '<leader>ft', ':Telescope colorscheme<cr>', { desc = 'Find colorscheme', silent = true })
 vim.keymap.set('n', '<leader>f/', ':Telescope current_buffer_fuzzy_find<cr>', { desc = 'Find in file', silent = true })
+vim.keymap.set('n', '<leader>fp', ':lua require("telescope").extensions.project.project{}<cr>', { desc = 'Find projects', silent = true })
 
 -- NeoTree keymaps
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<cr>', { desc = 'Toggle explorer', silent = true })
@@ -68,3 +69,5 @@ vim.keymap.set('n', '<leader>gb', ':lua require("telescope.builtin").git_branche
   { desc = 'Git branches', silent = true })
 vim.keymap.set('n', '<leader>gc', ':lua require("telescope.builtin").git_commits()<cr>',
   { desc = 'Git commits', silent = true })
+
+vim.keymap.set({'n', 'v', 'i'}, 'C-L', ':noh', {silent = true, noremap = true})
