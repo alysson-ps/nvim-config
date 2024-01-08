@@ -3,7 +3,7 @@ return function(_, _)
 
   local setup = {
     options = {
-      -- style_preset = ,
+      style_preset = bufferline.style_preset.minimal,
       -- stylua: ignore
       close_command = function(n) require("mini.bufremove").delete(n, false) end,
       -- stylua: ignore
@@ -15,6 +15,11 @@ return function(_, _)
         local ret = (diag.error and icons.DiagnosticError or "") .. (diag.warning and icons.DiagnosticWarn or "")
         return vim.trim(ret)
       end,
+      groups = {
+        items = {
+          require('bufferline.groups').builtin.pinned:with({ icon = "" })
+        },
+      },
       offsets = {
         {
           filetype = "neo-tree",
