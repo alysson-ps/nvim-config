@@ -127,3 +127,10 @@ autocmd("TermClose", {
     end
   end,
 })
+
+autocmd("BufWritePre", {
+  -- buffer = buffer,
+  callback = function()
+    vim.lsp.buf.format { async = false }
+  end
+})
