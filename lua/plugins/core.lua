@@ -153,10 +153,16 @@ return {
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
-    opts = {},
+    opts = {
+      scope = {
+        show_start = false,
+        show_end = false,
+      },
+    },
+    -- config = require("plugins.configs.ibl")
   },
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',               opts = {} },
+  { 'numToStr/Comment.nvim', opts = {} },
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -167,6 +173,7 @@ return {
       -- Fuzzy Finder Algorithm which requires local dependencies to be built.
       -- Only load if `make` is available. Make sure you have the system
       -- requirements installed.
+      'nvim-telescope/telescope-project.nvim',
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         -- NOTE: If you are having trouble with this installation,
@@ -196,6 +203,5 @@ return {
     },
     config = require("plugins.configs.neo-tree")
   },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-  { 'windwp/nvim-autopairs',               opts = {} },
+  { 'windwp/nvim-autopairs', opts = {} },
 }
