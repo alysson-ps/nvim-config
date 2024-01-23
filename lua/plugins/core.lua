@@ -198,7 +198,10 @@ return {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
+      'nvim-treesitter/nvim-treesitter-refactor',
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'windwp/nvim-ts-autotag',
+      'JoosepAlviste/nvim-ts-context-commentstring'
     },
     build = ':TSUpdate',
     config = require("plugins.configs.treesitter")
@@ -223,6 +226,9 @@ return {
       local icons = require("config.icons.nerd_font")
 
       require("nvim-tree").setup {
+        hijack_directories = {
+          auto_open = false
+        },
         hijack_cursor = false,
         actions = {
           open_file = {
@@ -230,7 +236,12 @@ return {
           },
         },
         renderer = {
-          highlight_git = true,
+          -- highlight_git = false,
+          highlight_diagnostics = true,
+          -- highlight_opened_files = "none",
+          -- highlight_modified = "none",
+          -- highlight_bookmarks = "none",
+          -- highlight_clipboard = "name",
           icons = {
             git_placement = 'after',
             show          = {
@@ -275,13 +286,15 @@ return {
         },
         view = {
           -- width = 15,
-          adaptive_size = true,
+          adaptive_size = false,
           cursorline = false,
         },
         update_focused_file = {
           enable = true
         },
-        filters = { custom = { "^.git$" } }
+        filters = {
+          custom = { "^.git$" },
+        }
       }
     end,
   },

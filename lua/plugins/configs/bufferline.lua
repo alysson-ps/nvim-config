@@ -11,6 +11,7 @@ return function(_, _)
       right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
       diagnostics = "nvim_lsp",
       always_show_bufferline = true,
+      show_close_icon = false,
       diagnostics_indicator = function(_, _, diag)
         local icons = require("config.icons.nerd_font")
         local ret = (diag.error and icons.DiagnosticError or "") .. (diag.warning and icons.DiagnosticWarn or "")
@@ -30,7 +31,7 @@ return function(_, _)
         },
         {
           filetype = "NvimTree",
-          text = "Nvim Tree",
+          text = "File explorer",
           highlight = "Directory",
           separator = true,
           text_align = "left"
@@ -40,6 +41,7 @@ return function(_, _)
   }
 
   bufferline.setup(setup)
+
   -- Fix bufferline when restoring a session
   vim.api.nvim_create_autocmd("BufAdd", {
     callback = function()
