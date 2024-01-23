@@ -205,11 +205,85 @@ return {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
+    enabled = false,
     -- branch = "v3.x",
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
     config = require("plugins.configs.neo-tree")
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      local icons = require("config.icons.nerd_font")
+
+      require("nvim-tree").setup {
+        hijack_cursor = false,
+        actions = {
+          open_file = {
+            quit_on_open = true,
+          },
+        },
+        renderer = {
+          highlight_git = true,
+          icons = {
+            git_placement = 'after',
+            show          = {
+              file = true,
+              folder = true,
+              folder_arrow = false,
+              git = true
+            },
+            glyphs        = {
+              default = icons.DefaultFile,
+              symlink = "",
+              folder = {
+                arrow_closed = "",
+                arrow_open = "",
+                default = "",
+                open = "",
+                empty = "",
+                empty_open = "",
+                symlink = "",
+                symlink_open = "",
+              },
+              git = {
+                unstaged = "", -- 
+                staged = "",
+                unmerged = "",
+                renamed = "➜",
+                untracked = "",
+                deleted = "",
+                ignored = "◌",
+              },
+            },
+          },
+          indent_markers = {
+            enable = false,
+            icons = {
+              corner = "└ ",
+              edge = "│ ",
+              item = "│ ",
+              none = "  ",
+            },
+          },
+        },
+        view = {
+          -- width = 15,
+          adaptive_size = true,
+          cursorline = false,
+        },
+        update_focused_file = {
+          enable = true
+        },
+        filters = { custom = { "^.git$" } }
+      }
+    end,
   },
   { 'windwp/nvim-autopairs', opts = {} },
 }

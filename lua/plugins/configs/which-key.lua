@@ -73,6 +73,9 @@ return function(_, _)
     ['p'] = {
       name = setIcon('Package', 1) .. "Packer Group"
     },
+    ['b'] = {
+      name = setIcon('Tab', 1) .. "Buffers Group"
+    }
   }
 
   wk.register(groups, {

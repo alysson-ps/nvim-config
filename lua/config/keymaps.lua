@@ -7,7 +7,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
+vim.keymap.set('n', '<leader>a', 'ggVG', { desc = "Select all lines", silent = true })
 -- Diagnostic keymaps
 -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
@@ -17,7 +17,7 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Basic keymaps
 vim.keymap.set('n', '<leader>q', ':confirm q!<cr>', { desc = 'Quit', silent = true })
 vim.keymap.set('n', '<leader>Q', ':confirm qall<cr>', { desc = 'Quit all', silent = true })
-vim.keymap.set('n', '<leader>w', ':w<cr>', { desc = 'Save', silent = true })
+vim.keymap.set('n', '<leader>w', ':silent w<cr>', { desc = 'Save', silent = true })
 vim.keymap.set('n', '<leader>c', function()
   local bd = require("mini.bufremove").delete
   if vim.bo.modified then
@@ -43,17 +43,21 @@ vim.keymap.set('n', '<leader>fd', ':Telescope diff_files<cr>', { desc = 'Find di
 vim.keymap.set('n', '<leader>fc', ':Telescope commands<cr>', { desc = 'Find command', silent = true })
 vim.keymap.set('n', '<leader>ft', ':Telescope colorscheme<cr>', { desc = 'Find colorscheme', silent = true })
 vim.keymap.set('n', '<leader>f/', ':Telescope current_buffer_fuzzy_find<cr>', { desc = 'Find in file', silent = true })
-vim.keymap.set('n', '<leader>fp', ':lua require("telescope").extensions.project.project{}<cr>', { desc = 'Find projects', silent = true })
+vim.keymap.set('n', '<leader>fp', ':lua require("telescope").extensions.project.project{}<cr>',
+  { desc = 'Find projects', silent = true })
+vim.keymap.set('n', '<leader>fT', ':Telescope filetypes<cr>', { desc = 'Find files types', silent = true })
 
 -- NeoTree keymaps
-vim.keymap.set('n', '<leader>e', ':Neotree toggle<cr>', { desc = 'Toggle explorer', silent = true })
-vim.keymap.set('n', '<leader>o', function()
-  if vim.bo.filetype == "neo-tree" then
-    vim.cmd.wincmd "p"
-  else
-    vim.cmd.Neotree "focus"
-  end
-end, { desc = 'Toggle explorer focus', silent = true })
+-- vim.keymap.set('n', '<leader>e', ':Neotree toggle<cr>', { desc = 'Toggle explorer', silent = true })
+-- vim.keymap.set('n', '<leader>o', function()
+--   if vim.bo.filetype == "neo-tree" then
+--     vim.cmd.wincmd "p"
+--   else
+--     vim.cmd.Neotree "focus"
+--   end
+-- end, { desc = 'Toggle explorer focus', silent = true })
+
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>', { desc = 'Toggle explorer', silent = true })
 
 -- Plugins
 vim.keymap.set('n', '<leader>pp', ':Lazy<cr>', { desc = 'Open Lazy', silent = true })
@@ -70,4 +74,4 @@ vim.keymap.set('n', '<leader>gb', ':lua require("telescope.builtin").git_branche
 vim.keymap.set('n', '<leader>gc', ':lua require("telescope.builtin").git_commits()<cr>',
   { desc = 'Git commits', silent = true })
 
-vim.keymap.set({'n', 'v', 'i'}, 'C-L', ':noh', {silent = true, noremap = true})
+vim.keymap.set({ 'n', 'v', 'i' }, 'C-L', ':noh', { silent = true, noremap = true })

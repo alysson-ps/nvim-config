@@ -17,4 +17,21 @@ require("config.commands")
 
 require("config.color")
 
--- vim.cmd([[colorscheme gruvbox-material]])
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- Configure as cores do NvimTree
+vim.cmd [[highlight NvimTreeNormal guibg=NONE ctermbg=NONE]]
+
+-- Cor do texto
+vim.cmd [[highlight NvimTreeNormal guifg=#abb2bf ctermfg=white]]
+
+-- Destaque do item selecionado
+vim.cmd [[highlight NvimTreeCursorLine guibg=#383c4a ctermbg=NONE]]
+vim.cmd [[highlight NvimTreeCursorLine guifg=NONE ctermfg=NONE]]
+
+-- Destaque do item selecionado quando o cursor está na linha
+vim.cmd [[highlight NvimTreeCursorLine guibg=#383c4a ctermbg=NONE]]
+vim.cmd [[highlight NvimTreeCursorLine guifg=NONE ctermfg=NONE]]
+
+vim.cmd([[colorscheme tokyonight-moon]])

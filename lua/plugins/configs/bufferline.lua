@@ -3,6 +3,7 @@ return function(_, _)
 
   local setup = {
     options = {
+      -- mode = 'tabs',
       style_preset = bufferline.style_preset.minimal,
       -- stylua: ignore
       close_command = function(n) require("mini.bufremove").delete(n, false) end,
@@ -27,6 +28,13 @@ return function(_, _)
           highlight = "Directory",
           text_align = "left",
         },
+        {
+          filetype = "NvimTree",
+          text = "Nvim Tree",
+          highlight = "Directory",
+          separator = true,
+          text_align = "left"
+        }
       },
     },
   }

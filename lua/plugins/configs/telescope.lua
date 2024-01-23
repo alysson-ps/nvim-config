@@ -8,14 +8,14 @@ return function(_, _)
         i = {
           ['<C-u>'] = false,
           ['<C-d>'] = false,
-          ["<C-q>"] = function(prompt_bufnr)
-            local colorscheme_file = vim.fn.stdpath('config') .. '/.colorscheme'
-
-            local selection = require('telescope.actions.state').get_selected_entry()
-            vim.cmd('colorscheme ' .. selection.value)
-            vim.fn.writefile({ selection.value }, colorscheme_file)
-            require('telescope.actions').close(prompt_bufnr)
-          end,
+          -- ["<C-q>"] = function(prompt_bufnr)
+          --   local colorscheme_file = vim.fn.stdpath('config') .. '/.colorscheme'
+          --
+          --   local selection = require('telescope.actions.state').get_selected_entry()
+          --   vim.cmd('colorscheme ' .. selection.value)
+          --   vim.fn.writefile({ selection.value }, colorscheme_file)
+          --   require('telescope.actions').close(prompt_bufnr)
+          -- end,
         },
       },
     },
@@ -23,13 +23,16 @@ return function(_, _)
       find_files = {
         theme = "dropdown"
       },
-      colorscheme = {
-        theme = "dropdown",
-        enable_preview = true,
-        on_complete = function(_)
-          print("aqui")
-        end
-      }
+      git = {
+        theme = "dropdown"
+      },
+      -- colorscheme = {
+      --   theme = "dropdown",
+      --   enable_preview = true,
+      --   on_complete = function(_)
+      --     print("aqui")
+      --   end
+      -- }
     }
   }
 
