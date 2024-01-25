@@ -128,9 +128,9 @@ autocmd("VimEnter", {
 --   end,
 -- })
 
-autocmd("BufWritePre", {
-  -- buffer = buffer,
-  callback = function()
-    vim.lsp.buf.format { async = false }
-  end
-})
+-- autocmd("BufWritePre", {
+--   -- buffer = buffer,
+--   callback = function()
+--     vim.lsp.buf.format { async = false }
+--   end
+-- })

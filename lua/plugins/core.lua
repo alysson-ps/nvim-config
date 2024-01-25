@@ -201,7 +201,8 @@ return {
       'nvim-treesitter/nvim-treesitter-refactor',
       'nvim-treesitter/nvim-treesitter-textobjects',
       'windwp/nvim-ts-autotag',
-      'JoosepAlviste/nvim-ts-context-commentstring'
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      'nvim-treesitter/playground'
     },
     build = ':TSUpdate',
     config = require("plugins.configs.treesitter")
