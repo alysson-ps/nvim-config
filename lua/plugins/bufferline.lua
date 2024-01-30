@@ -61,10 +61,10 @@ return {
     config = require("plugins.configs.bufferline")
   },
 
-  {
-    "SmiteshP/nvim-navic",
-    dependencies = { "neovim/nvim-lspconfig" }
-  },
+  -- {
+  --   "SmiteshP/nvim-navic",
+  --   dependencies = { "neovim/nvim-lspconfig" }
+  -- },
 
   {
     "utilyre/barbecue.nvim",

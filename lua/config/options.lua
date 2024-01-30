@@ -1,8 +1,8 @@
 -- which-key appearance
-vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#3B4252', fg = '#5E81AC' })
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#3B4252' })
-vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = '#3B4252' })
-vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = '#3B4252' })
+-- vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#3B4252', fg = '#5E81AC' })
+-- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#3B4252' })
+-- vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = '#3B4252' })
+-- vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = '#3B4252' })
 
 local options = {
   opt = {
@@ -34,17 +34,17 @@ local options = {
     showtabline = 2,                                 -- always display tabline
     signcolumn = "yes",                              -- always show the sign column
     smartcase = true,                                -- case sensitive searching
-    splitbelow = true,                               -- splitting a new window below the current one
-    splitright = true,                               -- splitting a new window at the right of the current one
-    tabstop = 2,                                     -- number of space in a tab
-    termguicolors = true,                            -- enable 24-bit RGB color in the TUI
-    timeoutlen = 300,                                -- shorten key timeout length a little bit for which-key
-    title = false,                                   -- set terminal title to the filename and path
-    undofile = true,                                 -- enable persistent undo
-    updatetime = 300,                                -- length of time to wait before triggering the plugin
-    virtualedit = "block",                           -- allow going past end of line in visual block mode
-    wrap = false,                                    -- disable wrapping of lines longer than the width of window
-    writebackup = false,                             -- disable making a backup before overwriting a file
+    -- splitbelow = true,                               -- splitting a new window below the current one
+    -- splitright = true,                               -- splitting a new window at the right of the current one
+    tabstop = 2,           -- number of space in a tab
+    termguicolors = true,  -- enable 24-bit RGB color in the TUI
+    timeoutlen = 300,      -- shorten key timeout length a little bit for which-key
+    title = false,         -- set terminal title to the filename and path
+    undofile = true,       -- enable persistent undo
+    updatetime = 300,      -- length of time to wait before triggering the plugin
+    virtualedit = "block", -- allow going past end of line in visual block mode
+    wrap = false,          -- disable wrapping of lines longer than the width of window
+    writebackup = false,   -- disable making a backup before overwriting a file
     swapfile = false,
   },
   g = {

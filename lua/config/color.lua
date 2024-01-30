@@ -1,11 +1,5 @@
-local M = {}
-
-function M.readColorScheme()
-  local colorscheme_file = vim.fn.stdpath('config') .. '/.colorscheme'
-
-  local file = vim.fn.readfile(colorscheme_file)[1]
-
-  print(file)
-end
-
-return M
+-- Themery block
+-- This block will be replaced by Themery.
+vim.cmd("colorscheme gruvbox-material")
+vim.g.theme_id = 18
+-- end themery block
