@@ -8,7 +8,7 @@ return function(_, opts)
       "diagnostics",
       -- ...and any additional source
     },
-    close_if_last_window = false,
+    close_if_last_window = true,
     enable_diagnostics = true,
     enable_git_status = true,
     popup_border_style = "rounded",
@@ -115,34 +115,34 @@ return function(_, opts)
     },
     hide_hidden = false,
     window = {
-      width = 42,
+      width = 35,
       auto_expand_width = false,
       mappings = {
         ["<space>"] = false,
       },
       same_level = false,
     },
-    git_status = {
-      window = {
-        position = "float",
-        mappings = {
-          ["A"]  = "git_add_all",
-          ["gu"] = "git_unstage_file",
-          ["ga"] = "git_add_file",
-          ["gr"] = "git_revert_file",
-          -- ["gc"] = "git_commit",
-          ["gp"] = "git_push",
-          ["gg"] = "git_commit_and_push",
-          ["o"]  = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
-          ["oc"] = { "order_by_created", nowait = false },
-          ["od"] = { "order_by_diagnostics", nowait = false },
-          ["om"] = { "order_by_modified", nowait = false },
-          ["on"] = { "order_by_name", nowait = false },
-          ["os"] = { "order_by_size", nowait = false },
-          ["ot"] = { "order_by_type", nowait = false },
-        }
-      }
-    },
+    -- git_status = {
+    --   window = {
+    --     position = "float",
+    --     mappings = {
+    --       ["A"]  = "git_add_all",
+    --       ["gu"] = "git_unstage_file",
+    --       ["ga"] = "git_add_file",
+    --       ["gr"] = "git_revert_file",
+    --       -- ["gc"] = "git_commit",
+    --       ["gp"] = "git_push",
+    --       ["gg"] = "git_commit_and_push",
+    --       ["o"]  = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+    --       ["oc"] = { "order_by_created", nowait = false },
+    --       ["od"] = { "order_by_diagnostics", nowait = false },
+    --       ["om"] = { "order_by_modified", nowait = false },
+    --       ["on"] = { "order_by_name", nowait = false },
+    --       ["os"] = { "order_by_size", nowait = false },
+    --       ["ot"] = { "order_by_type", nowait = false },
+    --     }
+    --   }
+    -- },
     diagnostics = {
       auto_preview = {                   -- May also be set to `true` or `false`
         enabled = false,                 -- Whether to automatically enable preview mode

@@ -26,8 +26,9 @@ return function(_, _)
       offsets = {
         {
           filetype = "neo-tree",
-          text = "Neo-tree",
+          text = "File explorer",
           highlight = "Directory",
+          separator = true,
           text_align = "left",
         },
         {

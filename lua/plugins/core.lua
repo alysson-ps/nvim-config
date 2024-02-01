@@ -62,12 +62,20 @@ return {
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
+      -- signs = {
+      --   add = { text = '+▎' },
+      --   change = { text = '~' },
+      --   delete = { text = '_' },
+      --   topdelete = { text = '‾' },
+      --   changedelete = { text = '~' },
+      -- },
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
       },
       current_line_blame_opts = {
         virt_text = true,
@@ -162,9 +170,28 @@ return {
     -- See `:help ibl`
     main = 'ibl',
     opts = {
+      indent = { char = "▏" },
       scope = {
         show_start = false,
         show_end = false,
+      },
+      exclude = {
+        buftypes = {
+          "nofile",
+          "terminal",
+        },
+        filetypes = {
+          "help",
+          "startify",
+          "aerial",
+          "alpha",
+          "dashboard",
+          "lazy",
+          "neogitstatus",
+          "NvimTree",
+          "neo-tree",
+          "Trouble",
+        },
       },
     },
     -- config = require("plugins.configs.ibl")

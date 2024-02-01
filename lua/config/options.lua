@@ -28,7 +28,7 @@ local options = {
     number = true,                                   -- show numberline
     preserveindent = false,                          -- preserve indent structure as much as possible
     pumheight = 10,                                  -- height of the pop up menu
-    relativenumber = false,                          -- show relative numberline
+    relativenumber = true,                           -- show relative numberline
     -- shiftwidth = 2, -- number of space inserted for indentation
     showmode = false,                                -- disable showing modes in command line
     showtabline = 2,                                 -- always display tabline
@@ -38,7 +38,7 @@ local options = {
     -- splitright = true,                               -- splitting a new window at the right of the current one
     tabstop = 2,           -- number of space in a tab
     termguicolors = true,  -- enable 24-bit RGB color in the TUI
-    timeoutlen = 300,      -- shorten key timeout length a little bit for which-key
+    timeoutlen = 600,      -- shorten key timeout length a little bit for which-key
     title = false,         -- set terminal title to the filename and path
     undofile = true,       -- enable persistent undo
     updatetime = 300,      -- length of time to wait before triggering the plugin
@@ -49,7 +49,7 @@ local options = {
   },
   g = {
     search_highlight_toggle = 0,
-    noconfirm = false,
+    -- noconfirm = false,
     mapleader = " ",                                 -- set leader key
     maplocalleader = ",",                            -- set default local leader key
     -- AstroNvim specific global options
