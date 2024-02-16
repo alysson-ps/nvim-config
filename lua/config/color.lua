@@ -1,5 +1,5 @@
 -- Themery block
 -- This block will be replaced by Themery.
-vim.cmd("colorscheme gruvbox-material")
-vim.g.theme_id = 18
+vim.cmd("colorscheme srcery")
+vim.g.theme_id = 11
 -- end themery block

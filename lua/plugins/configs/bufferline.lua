@@ -3,7 +3,7 @@ return function(_, _)
 
   local setup = {
     options = {
-      style_preset = bufferline.style_preset.minimal,
+      -- style_preset = bufferline.style_preset.minimal,
       close_command = function(n) require("mini.bufremove").delete(n, false) end,
       themable = true,
       -- right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
@@ -17,7 +17,7 @@ return function(_, _)
       -- end,
       -- buffer_close_icon = " ",
       show_buffer_close_icons = false,
-      separator_style = "thick",
+      -- separator_style = "thin",
       groups = {
         items = {
           require('bufferline.groups').builtin.pinned:with({ icon = "" })
@@ -28,14 +28,14 @@ return function(_, _)
           filetype = "neo-tree",
           text = "File explorer",
           highlight = "Directory",
-          separator = true,
+          -- separator = true,
           text_align = "left",
         },
         {
           filetype = "NvimTree",
           text = "File explorer",
           highlight = "Directory",
-          separator = true,
+          -- separator = true,
           text_align = "left"
         }
       },

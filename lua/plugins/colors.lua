@@ -10,5 +10,6 @@ return {
   { "Rigellute/shades-of-purple.vim", lazy = false, priority = 1000 },
   { "rebelot/kanagawa.nvim",          lazy = false, priority = 1000 },
   { "dikiaap/minimalist",             lazy = false, priority = 1000 },
-  { "sainnhe/everforest",             lazy = false, proority = 1000 }
+  { "sainnhe/everforest",             lazy = false, priority = 1000 },
+  { "LunarVim/lunar.nvim", lazy= false, priority = 1000}
 }

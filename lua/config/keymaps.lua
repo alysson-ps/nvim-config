@@ -48,16 +48,16 @@ vim.keymap.set('n', '<leader>fp', ':lua require("telescope").extensions.project.
 vim.keymap.set('n', '<leader>fT', ':Telescope filetypes<cr>', { desc = 'Find files types', silent = true })
 
 -- NeoTree keymaps
-vim.keymap.set('n', '<leader>e', ':Neotree toggle<cr>', { desc = 'Toggle explorer', silent = true })
-vim.keymap.set('n', '<leader>o', function()
-  if vim.bo.filetype == "neo-tree" then
-    vim.cmd.wincmd "p"
-  else
-    vim.cmd.Neotree "focus"
-  end
-end, { desc = 'Toggle explorer focus', silent = true })
+-- vim.keymap.set('n', '<leader>e', ':Neotree toggle<cr>', { desc = 'Toggle explorer', silent = true })
+-- vim.keymap.set('n', '<leader>o', function()
+--   if vim.bo.filetype == "neo-tree" then
+--     vim.cmd.wincmd "p"
+--   else
+--     vim.cmd.Neotree "focus"
+--   end
+-- end, { desc = 'Toggle explorer focus', silent = true })
 
--- vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>', { desc = 'Toggle explorer', silent = true })
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>', { desc = 'Toggle explorer', silent = true })
 
 -- Plugins
 vim.keymap.set('n', '<leader>pp', ':Lazy<cr>', { desc = 'Open Lazy', silent = true })
@@ -81,3 +81,6 @@ vim.keymap.set('n', '<leader>tt', ':ToggleTerm direction=tab<cr>', {
   silent = true,
   noremap = true
 })
+
+vim.keymap.set('n', '<leader>xx', ':TroubleToggle<cr>',
+  { silent = true, noremap = true, desc = 'Open diagnostics painel' })

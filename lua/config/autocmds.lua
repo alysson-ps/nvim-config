@@ -98,39 +98,57 @@ autocmd("VimEnter", {
 
 -- Neotree
 
-autocmd("BufEnter", {
-  desc = "Open Neo-Tree on startup with directory",
-  group = augroup("neotree_start", { clear = true }),
+-- autocmd("BufEnter", {
+--   desc = "Open Neo-Tree on startup with directory",
+--   group = augroup("neotree_start", { clear = true }),
+--   callback = function()
+--     if package.loaded["neo-tree"] then
+--       vim.api.nvim_del_augroup_by_name "neotree_start"
+--     else
+--       local stats = (vim.uv or vim.loop).fs_stat(vim.api.nvim_buf_get_name(0)) -- TODO: REMOVE vim.loop WHEN DROPPING SUPPORT FOR Neovim v0.9
+--       if stats and stats.type == "directory" then
+--         vim.api.nvim_del_augroup_by_name "neotree_start"
+--         require "neo-tree"
+--       end
+--     end
+--   end,
+-- })
+-- autocmd("TermClose", {
+--   pattern = "*lazygit*",
+--   desc = "Refresh Neo-Tree when closing lazygit",
+--   group = augroup("neotree_refresh", { clear = true }),
+--   callback = function()
+--     local manager_avail, manager = pcall(require, "neo-tree.sources.manager")
+--     if manager_avail then
+--       for _, source in ipairs { "filesystem", "git_status", "document_symbols" } do
+--         local module = "neo-tree.sources." .. source
+--         if package.loaded[module] then manager.refresh(require(module).name) end
+--       end
+--     end
+--   end,
+-- })
+--
+-- autocmd("BufWritePre", {
+--   -- buffer = buffer,
+--   callback = function()
+--     vim.lsp.buf.format { async = false }
+--   end
+-- })
+
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    if package.loaded["neo-tree"] then
-      vim.api.nvim_del_augroup_by_name "neotree_start"
-    else
-      local stats = (vim.uv or vim.loop).fs_stat(vim.api.nvim_buf_get_name(0)) -- TODO: REMOVE vim.loop WHEN DROPPING SUPPORT FOR Neovim v0.9
-      if stats and stats.type == "directory" then
-        vim.api.nvim_del_augroup_by_name "neotree_start"
-        require "neo-tree"
-      end
-    end
+    vim.highlight.on_yank()
   end,
-})
-autocmd("TermClose", {
-  pattern = "*lazygit*",
-  desc = "Refresh Neo-Tree when closing lazygit",
-  group = augroup("neotree_refresh", { clear = true }),
-  callback = function()
-    local manager_avail, manager = pcall(require, "neo-tree.sources.manager")
-    if manager_avail then
-      for _, source in ipairs { "filesystem", "git_status", "document_symbols" } do
-        local module = "neo-tree.sources." .. source
-        if package.loaded[module] then manager.refresh(require(module).name) end
-      end
-    end
-  end,
+  group = highlight_group,
+  pattern = '*',
 })
 
-autocmd("BufWritePre", {
-  -- buffer = buffer,
-  callback = function()
-    vim.lsp.buf.format { async = false }
-  end
-})
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   nested = true,
+--   callback = function()
+--     if #vim.api.nvim_list_wins() == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
+--       vim.cmd "quit"
+--     end
+--   end
+-- })

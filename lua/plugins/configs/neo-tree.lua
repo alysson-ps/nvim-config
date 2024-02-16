@@ -93,6 +93,7 @@ return function(_, opts)
     },
 
     filesystem = {
+      hijack_netrw_behavior = 'disabled',
       follow_current_file = {
         enabled = true,          -- This will find and focus the file in the active buffer every time
         --               -- the current file is changed while the tree is open.
@@ -115,12 +116,14 @@ return function(_, opts)
     },
     hide_hidden = false,
     window = {
+      -- possi
+      position = "float",
       width = 35,
       auto_expand_width = false,
       mappings = {
         ["<space>"] = false,
       },
-      same_level = false,
+      same_level = true,
     },
     -- git_status = {
     --   window = {
