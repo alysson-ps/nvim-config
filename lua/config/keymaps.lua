@@ -16,6 +16,7 @@ vim.keymap.set('n', '<leader>a', 'ggVG', { desc = "Select all lines", silent = t
 
 -- Basic keymaps
 vim.keymap.set('n', '<leader>q', ':confirm q!<cr>', { desc = 'Quit', silent = true })
+vim.keymap.set('n', '<leader>.', ':LspRestart<cr>', { desc = 'Quit', silent = true })
 vim.keymap.set('n', '<leader>Q', ':confirm qall<cr>', { desc = 'Quit all', silent = true })
 vim.keymap.set('n', '<leader>w', ':silent w<cr>', { desc = 'Save', silent = true })
 vim.keymap.set('n', '<leader>c', function()

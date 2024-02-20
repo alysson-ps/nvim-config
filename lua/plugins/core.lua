@@ -251,60 +251,87 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
-    lazy = false,
+    -- lazy = false,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("nvim-tree").setup {
-        update_cwd = true,
-        hijack_cursor = true,
-        git = {
-          ignore = false,
-        },
-        actions = {
-          open_file = {
-            resize_window = true,
-          },
-        },
-        view = {
-          width = 32,
-        },
+      require 'nvim-tree'.setup {
         renderer = {
-          highlight_git = true,
-          root_folder_modifier = ':t',
-          icons = {
-            glyphs = {
-              default = '',
-              symlink = '',
-              bookmark = '◉',
-              git = {
-                unstaged = '',
-                staged = '',
-                unmerged = '',
-                renamed = '',
-                deleted = '',
-                untracked = '',
-                ignored = '',
-              },
-              folder = {
-                default = '',
-                open = '',
-                symlink = '',
-              },
-            },
-            show = {
-              git = false,
-              file = true,
-              folder = true,
-              folder_arrow = false,
-            },
-          },
+          root_folder_label = false,
           indent_markers = {
             enable = true,
           },
+          icons = {
+            glyphs = {
+              default = '',
+              symlink = '',
+              git = {
+                untracked = "",
+                deleted = "",
+                ignored = "◌",
+                renamed = "➜",
+                staged = "✓",
+                unmerged = "",
+                unstaged = " ",
+              },
+              folder = {
+                default = "",
+                open = "",
+                empty = "",
+                empty_open = "",
+                symlink = "",
+              }
+            },
+            git_placement = "after",
+            show = {
+              git = true,
+              folder = true,
+              file = true,
+              folder_arrow = false,
+            }
+          }
+        },
+        actions = {
+          open_file = {
+            window_picker = {
+              exclude = {
+                filetype = {
+                  "packer",
+                  "qf"
+                },
+                buftype = {
+                  "terminal",
+                  "help"
+                }
+              },
+            },
+          },
+        },
+        filters = {
+          exclude = { '.git', 'node_modules', '.cache' },
+        },
+        update_focused_file = {
+          enable = true,
+          update_root = true,
+        },
+        git = {
+          enable = true,
+          ignore = false,
+          timeout = 500,
+        },
+        hijack_directories = { enable = true },
+        diagnostics = {
+          enable = true,
+        },
+        modified = {
+          enable = true,
+        },
+        view = {
+          width = "25%",
+          side = "left",
         },
       }
-    end,
+    end
   }
 }
